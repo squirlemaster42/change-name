@@ -23,5 +23,7 @@ hs_err_pid*
 
 front-end/.idea/*
 front-end/node_modules/*
+backend/.gradle/*
+backend/.idea/*
 *.iml
 front-end/.eslintcache
