@@ -35,7 +35,7 @@ export default class Registration extends Component {
                         password_confirmation: password_confirmation
                     }
                 },
-                { withCredentials: true }
+                { withCredentials: false }
             )
             .then(response => {
                 if (response.data.status === "created") {

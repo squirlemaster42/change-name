@@ -17,6 +17,17 @@ dependencies {
 
 }
 
+// File: build.gradle
+apply plugin: 'java'
+
+task(runSimple, dependsOn: 'classes', type: JavaExec) {
+    main = 'com.wf.server.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    systemProperty 'simple.message', 'Hello '
+}
+
+defaultTasks 'runSimple'
+
 test {
     useJUnitPlatform()
 }
