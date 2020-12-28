@@ -25,3 +25,6 @@ front-end/.idea/*
 front-end/node_modules/*
 *.iml
 front-end/.eslintcache
+*.bin
+*.bin
+*.lock
