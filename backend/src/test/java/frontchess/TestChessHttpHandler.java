@@ -16,19 +16,19 @@ public class TestChessHttpHandler {
 
                 1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 {This is a comment.}
                ;This is also a comment
-                4. Ba5 Nf6 5. O-O Be7
+               4. Ba5 Nf6 5. O-O Be7
                 """;
         ChessHttpHandler handler = new ChessHttpHandler();
         String jsonPGN = handler.genPGNJson(examplePGN);
         Gson gson = new Gson();
         PGNFile pgnFile = gson.fromJson(jsonPGN, PGNFile.class);
-        assertEquals(pgnFile.whiteName, "Jakob");
-        assertEquals(pgnFile.blackName, "Dill");
-        assertEquals(pgnFile.date, "2020.12.28");
-        assertEquals(pgnFile.moves, """
+        assertEquals("Jakob", pgnFile.whiteName);
+        assertEquals("Dill", pgnFile.blackName);
+        assertEquals("2020.12.28", pgnFile.date);
+        assertEquals("""
                 1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 {This is a comment.}
                 ;This is also a comment
-                4. Ba5 Nf6 5 O-O Be7
-                """);
+                4. Ba5 Nf6 5. O-O Be7
+                """.replaceAll("[\n\r]", ""), pgnFile.moves);
     }
 }
