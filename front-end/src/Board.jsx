@@ -11,7 +11,7 @@ export default function Board({ board, turn }) {
 
   function getXYPosition(i) {
     const x = i % 8
-    const y =Math.abs(Math.floor(i / 8) - 7)
+    const y = Math.abs(Math.floor(i / 8) - 7)
     return { x, y }
   }
 

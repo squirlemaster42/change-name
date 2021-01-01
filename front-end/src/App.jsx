@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import { gameSubject, initGame, resetGame } from './Game'
+import {gameSubject, initGame, resetGame} from './Game'
 import Board from './Board'
 
 function App() {
@@ -8,6 +8,18 @@ function App() {
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
+
+  //Test web server
+  React.useEffect(() => {
+    let eventSource = new EventSource("http://localhost:5000/moves")
+    eventSource.onmessage = e => handleCompMove(JSON.parse(e.data))
+  }, [])
+
+  const handleCompMove = (move) => {
+    console.log(move)
+  }
+  //End test web server
+
   useEffect(() => {
     initGame()
     const subscribe = gameSubject.subscribe((game) => {
@@ -18,6 +30,7 @@ function App() {
     })
     return () => subscribe.unsubscribe()
   }, [])
+
   return (
     <div className="container">
       {isGameOver && (

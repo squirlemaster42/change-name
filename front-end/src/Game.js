@@ -8,10 +8,6 @@ const chess = new Chess()
 export const gameSubject = new BehaviorSubject()
 
 export function initGame() {
-    const savedGame = localStorage.getItem('savedGame')
-    if (savedGame) {
-        chess.load(savedGame)
-    }
     updateGame()
 }
 
@@ -33,7 +29,6 @@ export function handleMove(from, to) {
         move(from, to)
     }
 }
-
 
 export function move(from, to, promotion) {
     let tempMove = { from, to }

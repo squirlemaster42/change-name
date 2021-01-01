@@ -14,6 +14,7 @@ export default function BoardSquare({
   const [, drop] = useDrop({
     accept: 'piece',
     drop: (item) => {
+      console.log(item.id)
       const [fromPosition] = item.id.split('_')
       handleMove(fromPosition, position)
     },

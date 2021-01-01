@@ -3,13 +3,13 @@ package frontchess;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestChessHttpHandler {
 
-    @Test
-    public void testCreatePGNJson(){
-        String examplePGN = """
+    public static final String examplePGN = """
                 [White "Jakob"]
                 [Black "Dill"]
                 [Date "2020.12.28"]
@@ -18,6 +18,9 @@ public class TestChessHttpHandler {
                ;This is also a comment
                4. Ba5 Nf6 5. O-O Be7
                 """;
+
+    @Test
+    public void testCreatePGNJson(){
         ChessHttpHandler handler = new ChessHttpHandler();
         String jsonPGN = handler.genPGNJson(examplePGN);
         Gson gson = new Gson();
@@ -31,4 +34,16 @@ public class TestChessHttpHandler {
                 4. Ba5 Nf6 5. O-O Be7
                 """.replaceAll("[\n\r]", ""), pgnFile.moves);
     }
+
+    @Test
+    public void testSendPGN(){
+        System.out.println("-------- Trying to send message --------");
+        ChessHttpHandler handler = new ChessHttpHandler();
+        try {
+            handler.sendPGN(examplePGN, "ws://localhost:5000/moves");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
