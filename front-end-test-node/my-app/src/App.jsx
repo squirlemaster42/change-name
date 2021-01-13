@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import {gameSubject, initGame, resetGame} from './Game'
 import Board from './Board'
+import socketClient from "socket.io-client"
+const SERVER = "http://127.0.0.1:8080";
 
 function App() {
   const [board, setBoard] = useState([])
   const [isGameOver, setIsGameOver] = useState()
   const [result, setResult] = useState()
   const [turn, setTurn] = useState()
+
+  var socket = socketClient (SERVER);
+  socket.on('connection', () => {
+    console.log(`I'm connected with the back-end`);
+  });
 
   useEffect(() => {
     initGame()

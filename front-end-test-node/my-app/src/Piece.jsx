@@ -14,8 +14,7 @@ export default function Piece({
       return { isDragging: !!monitor.isDragging() }
     },
   })
-    console.log(`${type}_${color}`)
-  const pieceImg = require(`./assets/${type}_${color}.png`)
+  const pieceImg = require(`./assets/${type}_${color}.png`).default
   return (
     <>
       <DragPreviewImage connect={preview} src={pieceImg} />
