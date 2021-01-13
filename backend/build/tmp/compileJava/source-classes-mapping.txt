@@ -2,3 +2,5 @@ frontchess/PGNFile.java
  frontchess.PGNFile
 frontchess/ChessHttpHandler.java
  frontchess.ChessHttpHandler
+frontchess/ServerTester.java
+ frontchess.ServerTester
